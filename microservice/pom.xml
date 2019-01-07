@@ -242,5 +242,6 @@ Bundle-SymbolicName: ${project.groupId}.${project.artifactId}
     <module>dao-impl</module>
     <module>rest-service</module>
     <module>rest-app</module>
+    <module>flow-impl</module>
   </modules>
 </project>
