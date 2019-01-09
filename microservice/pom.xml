@@ -14,7 +14,9 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <bnd.version>4.1.0</bnd.version>
-    </properties>
+		<vaadin.version>12.0.3</vaadin.version>
+	</properties>
+    
 
     <repositories>
         <repository>
@@ -38,6 +40,13 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+		<!-- Repository used by many Vaadin add-ons -->
+		<repository>
+			<id>Vaadin Directory</id>
+			<url>http://maven.vaadin.com/vaadin-addons</url>
+		</repository>
+		<!-- Repository needed for prerelease versions of Vaadin <repository> <id>vaadin-prereleases</id> 
+			<url>https://maven.vaadin.com/vaadin-prereleases</url> </repository> -->
     </repositories>
 
     <pluginRepositories>
@@ -52,6 +61,11 @@
                 <enabled>true</enabled>
             </snapshots>
         </pluginRepository>
+		<!-- Repository needed for prerelease versions of Vaadin 
+			<pluginRepository> 
+			<id>vaadin-prereleases</id> 
+			<url>https://maven.vaadin.com/vaadin-prereleases</url> 
+			</pluginRepository> -->
     </pluginRepositories>
 
     <dependencyManagement>
@@ -91,8 +105,17 @@
                 <type>pom</type>
                 <scope>test</scope>
             </dependency>
-        </dependencies>
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-bom</artifactId>
+				<type>pom</type>
+				<scope>import</scope>
+				<version>${vaadin.version}</version>
+			</dependency>
+		</dependencies>
     </dependencyManagement>
+
+
 
     <build>
         <pluginManagement>
