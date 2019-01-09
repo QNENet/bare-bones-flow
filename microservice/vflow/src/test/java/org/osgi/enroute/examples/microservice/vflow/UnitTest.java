@@ -1,4 +1,4 @@
-package org.osgi.enroute.examples.microservice.flow;
+package org.osgi.enroute.examples.microservice.vflow;
 
 import org.junit.Test;
 

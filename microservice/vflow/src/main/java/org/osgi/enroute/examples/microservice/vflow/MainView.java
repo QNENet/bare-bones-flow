@@ -1,4 +1,4 @@
-package org.osgi.enroute.examples.microservice.flow;
+package org.osgi.enroute.examples.microservice.vflow;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;

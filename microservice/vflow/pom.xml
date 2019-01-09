@@ -10,14 +10,25 @@
 	</parent>
 
 	<groupId>org.osgi.enroute.examples.microservice</groupId>
-	<artifactId>flow</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>vflow</artifactId>
+	<description>The vflow DS component - built using OSGi enRoute R7</description>
 
-	<description>The flow DS component - built using OSGi enRoute R7</description>
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<vaadin.version>12.0.3</vaadin.version>
+	</properties>
 
-    <properties>
-        <vaadin.version>12.0.3</vaadin.version>
-    </properties>
+	<repositories>
+		<!-- Repository used by many Vaadin add-ons -->
+		<repository>
+			<id>Vaadin Directory</id>
+			<url>http://maven.vaadin.com/vaadin-addons</url>
+		</repository>
+		<!-- Repository needed for prerelease versions of Vaadin <repository> <id>vaadin-prereleases</id> 
+			<url>https://maven.vaadin.com/vaadin-prereleases</url> </repository> -->
+	</repositories>
 
     <dependencyManagement>
         <dependencies>
@@ -31,7 +42,17 @@
         </dependencies>
     </dependencyManagement>
 
-    <dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>org.osgi.enroute</groupId>
+			<artifactId>osgi-api</artifactId>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi.enroute</groupId>
+			<artifactId>test-bundles</artifactId>
+			<type>pom</type>
+		</dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-core</artifactId>
@@ -42,7 +63,6 @@
             <artifactId>flow-osgi</artifactId>
         </dependency>
 
-<!-- 
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>osgi.cmpn</artifactId>
@@ -55,7 +75,7 @@
             <artifactId>org.osgi.core</artifactId>
             <version>6.0.0</version>
             <scope>provided</scope>
-        </dependency>  -->
+        </dependency>
 
         <!-- Added to provide logging output as Flow uses -->
         <!-- the unbound SLF4J no-operation (NOP) logger implementation -->
@@ -71,37 +91,7 @@
             <scope>provided</scope>
         </dependency>
 
-		<dependency>
-			<groupId>org.osgi.enroute</groupId>
-			<artifactId>osgi-api</artifactId>
-			<type>pom</type>
-		</dependency>
-		<dependency>
-			<groupId>org.osgi.enroute</groupId>
-			<artifactId>test-bundles</artifactId>
-			<type>pom</type>
-		</dependency>
 	</dependencies>
-	
-
-	<repositories>
-		<!-- Repository used by many Vaadin add-ons -->
-		<repository>
-			<id>Vaadin Directory</id>
-			<url>http://maven.vaadin.com/vaadin-addons</url>
-		</repository>
-		<!-- Repository needed for prerelease versions of Vaadin <repository> <id>vaadin-prereleases</id> 
-			<url>https://maven.vaadin.com/vaadin-prereleases</url> </repository> -->
-	</repositories>
-
-    <pluginRepositories>
-        <!-- Repository needed for prerelease versions of Vaadin
-        <pluginRepository>
-            <id>vaadin-prereleases</id>
-            <url>https://maven.vaadin.com/vaadin-prereleases</url>
-        </pluginRepository>
-        -->
-    </pluginRepositories>
 
 	<build>
 		<plugins>

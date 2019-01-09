@@ -1,4 +1,4 @@
-package org.osgi.enroute.examples.microservice.flow.osgi;
+package org.osgi.enroute.examples.microservice.vflow.osgi;
 
 import org.osgi.service.component.annotations.Component;
 

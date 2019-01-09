@@ -1,4 +1,4 @@
-package org.osgi.enroute.examples.microservice.flow.osgi;
+package org.osgi.enroute.examples.microservice.vflow.osgi;
 
 import java.util.Hashtable;
 
