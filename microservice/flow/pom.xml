@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>microservice</artifactId>
+		<groupId>org.osgi.enroute.examples</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<groupId>org.osgi.enroute.examples.microservice</groupId>
+	<artifactId>flow</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<description>The flow DS component - built using OSGi enRoute R7</description>
+
+    <properties>
+        <vaadin.version>12.0.3</vaadin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-bom</artifactId>
+                <type>pom</type>
+                <scope>import</scope>
+                <version>${vaadin.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>flow-osgi</artifactId>
+        </dependency>
+
+<!-- 
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>osgi.cmpn</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>  -->
+
+        <!-- Added to provide logging output as Flow uses -->
+        <!-- the unbound SLF4J no-operation (NOP) logger implementation -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+		<dependency>
+			<groupId>org.osgi.enroute</groupId>
+			<artifactId>osgi-api</artifactId>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi.enroute</groupId>
+			<artifactId>test-bundles</artifactId>
+			<type>pom</type>
+		</dependency>
+	</dependencies>
+	
+
+	<repositories>
+		<!-- Repository used by many Vaadin add-ons -->
+		<repository>
+			<id>Vaadin Directory</id>
+			<url>http://maven.vaadin.com/vaadin-addons</url>
+		</repository>
+		<!-- Repository needed for prerelease versions of Vaadin <repository> <id>vaadin-prereleases</id> 
+			<url>https://maven.vaadin.com/vaadin-prereleases</url> </repository> -->
+	</repositories>
+
+    <pluginRepositories>
+        <!-- Repository needed for prerelease versions of Vaadin
+        <pluginRepository>
+            <id>vaadin-prereleases</id>
+            <url>https://maven.vaadin.com/vaadin-prereleases</url>
+        </pluginRepository>
+        -->
+    </pluginRepositories>
+
+	<build>
+		<plugins>
+			<!-- Expected to inherit configuration from a parent enRoute pom. This 
+				includes -contract definitions and maven-jar-plugin setup -->
+			<plugin>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
