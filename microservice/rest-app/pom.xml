@@ -52,6 +52,42 @@
 			<version>1.4.196</version>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.osgi.enroute.examples.microservice</groupId>
+			<artifactId>vflow</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.11.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vaadin.external</groupId>
+			<artifactId>gentyref</artifactId>
+			<version>1.2.0.vaadin1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vaadin.external.gwt</groupId>
+			<artifactId>gwt-elemental</artifactId>
+			<version>2.8.2.vaadin2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.helger</groupId>
+			<artifactId>ph-css</artifactId>
+			<version>6.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.helger</groupId>
+			<artifactId>ph-commons</artifactId>
+			<version>9.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.service.serviceloader</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
