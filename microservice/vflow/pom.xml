@@ -63,12 +63,6 @@
 			<artifactId>flow-osgi</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>osgi.cmpn</artifactId>
-			<version>6.0.0</version>
-			<scope>provided</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>org.osgi</groupId>
@@ -91,40 +85,45 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.osgi/org.osgi.enterprise -->
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.enterprise</artifactId>
+			<version>5.0.0</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
 			<!-- Expected to inherit configuration from a parent enRoute pom. This 
 				includes -contract definitions and maven-jar-plugin setup -->
-<!--		<plugin>
+			<!-- <plugin> <groupId>biz.aQute.bnd</groupId> <artifactId>bnd-maven-plugin</artifactId> 
+				</plugin> -->
+
+
+			<plugin>
 				<groupId>biz.aQute.bnd</groupId>
 				<artifactId>bnd-maven-plugin</artifactId>
-			</plugin>   -->	
-			
-			
-			                <plugin>
-                    <groupId>biz.aQute.bnd</groupId>
-                    <artifactId>bnd-maven-plugin</artifactId>
-                    <version>${bnd.version}</version>
-                    <configuration>
-                        <bnd><![CDATA[
+				<version>${bnd.version}</version>
+				<configuration>
+					<bnd><![CDATA[
 Bundle-SymbolicName: ${project.groupId}.${project.artifactId}
 -sources: true
 -contract: *
 Vaadin-OSGi-Extender: true
 ]]></bnd>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>bnd-process</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-			
-			
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>bnd-process</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -142,52 +141,55 @@ Vaadin-OSGi-Extender: true
 					</execution>
 				</executions>
 			</plugin>
-			
-             <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.7</version>
-                <executions>
-                    <execution>
-                        <id>copy-frontend</id>
-                        <phase>generate-resources</phase>
-                        <configuration>
-                            <tasks>
-                                <mkdir dir="${project.build.directory}/generated-resources/frontend/bower_components"/>
-                                <copy todir="${project.build.directory}/generated-resources/frontend/bower_components">
-                                    <fileset dir="${project.build.directory}/dependency/META-INF/resources/webjars/"/>
-                                </copy>
-                            </tasks>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
-                    <execution>
-                        <id>add-resource</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>add-resource</goal>
-                        </goals>
-                        <configuration>
-                            <resources>
-                                <resource>
-                                    <directory>${project.build.directory}/generated-resources</directory>
-                                    <targetPath/>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>copy-frontend</id>
+						<phase>generate-resources</phase>
+						<configuration>
+							<tasks>
+								<mkdir
+									dir="${project.build.directory}/generated-resources/frontend/bower_components" />
+								<copy
+									todir="${project.build.directory}/generated-resources/frontend/bower_components">
+									<fileset
+										dir="${project.build.directory}/dependency/META-INF/resources/webjars/" />
+								</copy>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>add-resource</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>add-resource</goal>
+						</goals>
+						<configuration>
+							<resources>
+								<resource>
+									<directory>${project.build.directory}/generated-resources</directory>
+									<targetPath />
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 
 		</plugins>
 	</build>
